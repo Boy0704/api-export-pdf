@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        h1 {
+            color: #25a7e7;
+            text-align: center;
+        }
+        .table {
+            width: 100%;
+        }
+        .table, .table th, .table td {
+            border: 1px solid #25a7e7;
+            border-collapse: collapse;
+        }
+        .table th {
+            background-color: #25a7e7;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<h1>List User Github</h1>
+
+<br />
+<table class="table">
+    <tr>
+        <th>No #</th>
+        <th>Foto</th>
+        <th>Login</th>
+    </tr>
+    <tr th:each="item, iterStat: ${githubUsers}">
+        <td th:text="${iterStat.index + 1}"></td>
+        <td>
+            <img th:src="@{${item.getAvatar_url}}" th:width="100px" />
+        </td>
+        <td th:text="${item.getLogin}"></td>
+    </tr>
+</table>
+</body>
+</html>
